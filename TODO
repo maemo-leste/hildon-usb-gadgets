@@ -1,0 +1,4 @@
+Add licensing
+Fix/pdate NEWS/README/ChangeLog/AUTHORS
+Fixup debian/ packaging dir
+Make code a lot more clear, handle exit codes, fix usb vid/pid, etc
