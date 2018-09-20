@@ -1,0 +1,13 @@
+Source: hildon-usb-gadgets
+Section: misc
+Priority: optional
+Maintainer: Merlijn Wajer <merlijn@wizzup.org>
+Build-Depends: debhelper (>= 9.0.0),
+               automake,
+               libusbgx-dev
+Standards-Version: 3.7.2
+
+Package: hildon-usb-gadgets
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libusbgx
+Description: Hildon USB gadgets
