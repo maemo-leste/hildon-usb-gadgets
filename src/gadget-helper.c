@@ -27,7 +27,7 @@ static usbg_state *state = NULL;
 
 int network_gadget(void) {
     usbg_gadget *g;
-    usbg_function *f_ecm;
+    usbg_function *f_rndis;
     usbg_config *c;
 
     /* TODO: Proper values for identifiers and names */
@@ -36,9 +36,9 @@ int network_gadget(void) {
     /* TODO: Nokia pid/vid */
     /* TODO: g_attrs is currently shared */
     LUGX_CALL(usbg_create_gadget(state, "g1", &g_attrs, &g_strs, &g));
-    LUGX_CALL(usbg_create_function(g, USBG_F_ECM, "usb0", NULL, &f_ecm));
+    LUGX_CALL(usbg_create_function(g, USBG_F_RNDIS, "usb0", NULL, &f_rndis));
     LUGX_CALL(usbg_create_config(g, 1, "The only one", NULL, &c_strs, &c));
-    LUGX_CALL(usbg_add_config_function(c, "some_name_here", f_ecm));
+    LUGX_CALL(usbg_add_config_function(c, "some_name_here", f_rndis));
     LUGX_CALL(usbg_enable_gadget(g, DEFAULT_UDC));
 
     return 0;
