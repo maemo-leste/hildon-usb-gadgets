@@ -1,3 +1,9 @@
+hildon-usb-gadgets (0.2.1-1) unstable; urgency=low
+
+  * Fix compilation in Chimaera
+
+ -- Merlijn B. W. Wajer <merlijn@wizzup.org>  Wed, 30 Nov 2022 14:05:51 +0100
+
 hildon-usb-gadgets (0.2-1) unstable; urgency=low
 
   * Switch to using RNDIS for broader support, see GH issue #643
