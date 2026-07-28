@@ -38,6 +38,7 @@ int network_gadget(void) {
     LUGX_CALL(usbg_create_gadget(state, "g1", &g_attrs, &g_strs, &g));
     LUGX_CALL(usbg_create_function(g, USBG_F_RNDIS, "usb0", NULL, &f_rndis));
     LUGX_CALL(usbg_create_config(g, 1, "The only one", NULL, &c_strs, &c));
+    LUGX_CALL(usbg_set_config_max_power(c, 250)); /* 500 mA */
     LUGX_CALL(usbg_add_config_function(c, "some_name_here", f_rndis));
     LUGX_CALL(usbg_enable_gadget(g, DEFAULT_UDC));
 
@@ -57,6 +58,7 @@ int mass_storage_gadget(void) {
     LUGX_CALL(usbg_create_function(g, USBG_F_MASS_STORAGE, "my_reader",
                     &f_attrs, &f_ms));
     LUGX_CALL(usbg_create_config(g, 1, "The only one", NULL, &c_strs, &c));
+    LUGX_CALL(usbg_set_config_max_power(c, 250)); /* 500 mA */
     LUGX_CALL(usbg_add_config_function(c, "some_name_here", f_ms));
     LUGX_CALL(usbg_enable_gadget(g, DEFAULT_UDC));
 
