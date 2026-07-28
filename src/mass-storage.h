@@ -17,8 +17,8 @@ static struct usbg_gadget_attrs g_attrs = {
 
 static struct usbg_gadget_strs g_strs = {
     .serial = "0123456789", /* Serial number */
-    .manufacturer = "Foo Inc.", /* Manufacturer */
-    .product = "Bar Gadget" /* Product string */
+    .manufacturer = "Maemo Leste", /* Manufacturer */
+    .product = "Hildon USB Gadget" /* Product string */
 };
 
 static struct usbg_f_ms_lun_attrs f_ms_luns_array[] = {
@@ -45,9 +45,5 @@ static struct usbg_f_ms_attrs f_attrs = {
     .stall = 0,
     .nluns = 1,
     .luns = f_ms_luns,
-};
-
-static struct usbg_config_strs c_strs = {
-        "1xMass Storage"
 };
 

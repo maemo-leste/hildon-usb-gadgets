@@ -29,6 +29,7 @@ int network_gadget(void) {
     usbg_gadget *g;
     usbg_function *f_rndis;
     usbg_config *c;
+    struct usbg_config_strs c_strs = { .configuration = "RNDIS" };
 
     /* TODO: Proper values for identifiers and names */
     /* TODO: Test macro fail path */
@@ -36,10 +37,11 @@ int network_gadget(void) {
     /* TODO: Nokia pid/vid */
     /* TODO: g_attrs is currently shared */
     LUGX_CALL(usbg_create_gadget(state, "g1", &g_attrs, &g_strs, &g));
+    LUGX_CALL(usbg_set_gadget_product(g, LANG_US_ENG, "Hildon RNDIS"));
     LUGX_CALL(usbg_create_function(g, USBG_F_RNDIS, "usb0", NULL, &f_rndis));
-    LUGX_CALL(usbg_create_config(g, 1, "The only one", NULL, &c_strs, &c));
+    LUGX_CALL(usbg_create_config(g, 1, "RNDIS", NULL, &c_strs, &c));
     LUGX_CALL(usbg_set_config_max_power(c, 250)); /* 500 mA */
-    LUGX_CALL(usbg_add_config_function(c, "some_name_here", f_rndis));
+    LUGX_CALL(usbg_add_config_function(c, "c_rndis", f_rndis));
     LUGX_CALL(usbg_enable_gadget(g, DEFAULT_UDC));
 
     return 0;
@@ -49,17 +51,19 @@ int mass_storage_gadget(void) {
     usbg_gadget *g;
     usbg_function *f_ms;
     usbg_config *c;
+    struct usbg_config_strs c_strs = { .configuration = "Mass Storage" };
 
     /* TODO: Proper values for identifiers and names */
     /* TODO: Test macro fail path */
     /* TODO: Support multiple templates ? */
     /* TODO: Nokia pid/vid */
     LUGX_CALL(usbg_create_gadget(state, "g1", &g_attrs, &g_strs, &g));
+    LUGX_CALL(usbg_set_gadget_product(g, LANG_US_ENG, "Hildon Mass Storage"));
     LUGX_CALL(usbg_create_function(g, USBG_F_MASS_STORAGE, "my_reader",
                     &f_attrs, &f_ms));
-    LUGX_CALL(usbg_create_config(g, 1, "The only one", NULL, &c_strs, &c));
+    LUGX_CALL(usbg_create_config(g, 1, "Mass Storage", NULL, &c_strs, &c));
     LUGX_CALL(usbg_set_config_max_power(c, 250)); /* 500 mA */
-    LUGX_CALL(usbg_add_config_function(c, "some_name_here", f_ms));
+    LUGX_CALL(usbg_add_config_function(c, "c_ms", f_ms));
     LUGX_CALL(usbg_enable_gadget(g, DEFAULT_UDC));
 
     return 0;
